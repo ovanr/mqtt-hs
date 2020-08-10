@@ -140,7 +140,7 @@ connectURI cfg uri = do
   where
     port "" "mqtt:"  = 1883
     port "" "mqtts:" = 8883
-    port x _         = read x
+    port x _         = (read . tail) x
 
     up "" = (Nothing, Nothing)
     up x = let (u,r) = break (== ':') (init x) in
